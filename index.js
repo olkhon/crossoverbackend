@@ -14,9 +14,9 @@ const messagesRoutes = require("./Routes/messages");
 app.use('/user', userRoutes);
 app.use("/messages", messagesRoutes);
 
-const port = 3000;
+const {PORT} = process.env.PORT;
 
 
 
 
-app.listen(port, () => console.log(`Server running on port: ${port} `));
+app.listen(PORT, () => console.log(`Server running on port: ${PORT} `));
