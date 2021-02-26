@@ -10,12 +10,7 @@ app.use(bodyParser.json());
 
 const userRoutes = require('./Routes/user');
 
-
-const port = 3000;
-
 app.use('/user', userRoutes);
-
-
 
 const port = 3000;
 
