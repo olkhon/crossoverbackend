@@ -6,7 +6,9 @@ dotenv.config();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 // for json stuff
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+
+app.use(express.json())
 
 const userRoutes = require('./Routes/user');
 const messagesRoutes = require("./Routes/messages");
