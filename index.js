@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const userRoutes = require('./Routes/user');
+const messagesRoutes = require("./Routes/messages");
 
 app.use('/user', userRoutes);
+app.use("/messages", messagesRoutes);
 
 const port = 3000;
 
