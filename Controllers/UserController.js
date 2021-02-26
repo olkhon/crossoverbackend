@@ -3,14 +3,13 @@ const pool = require('../dbconfig');
 
 module.exports = {
     newUser: async(req, res) => {
-        const {first_name, last_name, age} = req.body;
+        const {name, email, password} = req.body;
         // express validator; put column names in double quotes !!!;
         try {
-            const answerDB = await pool.query('INSERT INTO users (first_name, last_name, age) VALUES ( $1, $2, $3)', [first_name, last_name, age]);
+            const answerDB = await pool.query('INSERT INTO users (name, email, password) VALUES ( $1, $2, $3)', [name, email, password]);
             res.json({
-                message: "New user with the following values:" + [first_name, last_name, age],
+                message: "New user with the following values:" + [name, email, password],
                 code: 200,
-                description: "User added" + [first_name, last_name, age],
                 data: answerDB.rows
             })
 
@@ -21,15 +20,14 @@ module.exports = {
     },
     updateUser: async (req, res) => {
 
-        const {first_name, last_name, age, id} = req.params;
+        const {name, email, password} = req.params;
 
         try {
-            const answerDB = await pool.query('UPDATE users SET first_name = $1, last_name = $2, age= $3 WHERE id = $4',
-            [first_name, last_name, age, id]);
+            const answerDB = await pool.query('UPDATE users SET name = $1, email = $2, password= $3 WHERE id = $4',
+            [name, email, password, id]);
             res.json({
                 message: "Update user with id:" + id,
                 code: 200,
-                description: "User update with id:" + id,
                 data: answerDB.rows[0]
             })
 
@@ -46,7 +44,6 @@ module.exports = {
             res.json({
                 message: "Delete" + id,
                 code: 200,
-                description: "User with id:" + id,
                 data: answerDB.rows[0]
             })
 
@@ -63,7 +60,6 @@ module.exports = {
             res.json({
                 message: "Retrieve user by id:" + id,
                 code: 200,
-                description: "User with id:" + id,
                 data: answerDB.rows[0]
             })
 
@@ -78,7 +74,6 @@ module.exports = {
             res.json({
                 message: "Retrieved all user",
                 code: 200,
-                description: "List of all Users",
                 data: answerDB.rows
             })
 

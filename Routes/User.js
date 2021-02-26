@@ -10,7 +10,7 @@ router.put('/:id', UserController.updateUser);
 
 router.get('/', UserController.getUser);
 
-router.delete('/deleteuser/:id', UserController.deleteUser)
-router.post('/newuser', UserController.newUser)
+router.delete('/:id', UserController.deleteUser)
+router.post('/', UserController.newUser)
 
 module.exports = router;
