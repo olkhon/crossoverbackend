@@ -14,7 +14,7 @@ const messagesRoutes = require("./Routes/messages");
 app.use('/user', userRoutes);
 app.use("/messages", messagesRoutes);
 
-const {PORT} = process.env.PORT;
+const {PORT} = process.env;
 
 
 
