@@ -1,30 +1,19 @@
-try {
-    const express = require('express');
-    const app = express();
+const express = require("express");
+const app = express();
 
-    const dotenv = require('dotenv');
-    dotenv.config();
-    var bodyParser = require('body-parser');
-    app.use(bodyParser.urlencoded({ extended: true }));
-    // for json stuff
-    // app.use(bodyParser.json());
+const dotenv = require("dotenv");
+dotenv.config();
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+// for json stuff
+ app.use(bodyParser.json());
 
+const userRoutes = require("./Routes/user");
+const messagesRoutes = require("./Routes/messages");
 
-    app.use(express.json())
+app.use("/user", userRoutes);
+app.use("/messages", messagesRoutes);
 
-    const userRoutes = require('./Routes/user');
-    const messagesRoutes = require("./Routes/messages");
+const { PORT } = process.env;
 
-    app.use('/user', userRoutes);
-    app.use("/messages", messagesRoutes);
-
-    const {PORT} = process.env;
-
-
-
-
-    app.listen(PORT, () => console.log(`Server running on port: ${PORT} `));
-} catch (error) {
-    console.log(error);
-}
-
+app.listen(PORT, () => console.log(`Server running on port: ${PORT} `));
